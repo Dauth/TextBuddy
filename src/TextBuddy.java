@@ -1,6 +1,7 @@
 import java.io.*;
 import java.util.*;
 
+
 public class TextBuddy{
 
 	private static String MSG_ADD="added to %s: \"%s\"\n";
@@ -15,12 +16,15 @@ public class TextBuddy{
 	private static String MSG_DELETE_LINE_ERROR="Unable to delete line %d as it does not exist\n";
 	private static String MSG_INVALID_FORMAT = "Invalid command, please use only available commands\n";
 	private static String MSG_NULL_FORMAT = "No command has been entered\n";
+	private static String MSG_KEYWORD_NOT_FOUND = "No lines in txt contains keyword\n";
+	private static String MSG_SUCCESS_SORT = "Txt has been successfully sorted\n";
+	private static String MSG_EMPTY_SORT = "Unable to sort txt as it is empty\n";
 	private static String fileName="";
 	static ArrayList<String> list=new ArrayList<String>();
 
 	// Current possible commands a user can input
 	enum USER_COMMAND {
-		ADD,DELETE,DISPLAY,CLEAR,EXIT,INVALID;
+		ADD,DELETE,DISPLAY,CLEAR,EXIT,INVALID,SORT,SEARCH;
 	}
 	public static void main(String[] args) {
 		TextBuddy textBuddy = new TextBuddy(args);
@@ -55,6 +59,7 @@ public class TextBuddy{
 	public void run(){
 		Scanner sc = readCommand();
 		while(sc.hasNext()){
+			loadList();
 			outputMsg(MSG_DEFAULT);
 			outputMsg(commandOperations(sc));
 		}
@@ -92,6 +97,12 @@ public class TextBuddy{
 		case DISPLAY:
 			output=listMem();
 			break;
+		case SORT:
+			output=sortList();
+			break;
+		case SEARCH:
+			output=searchList(content);
+			break;
 		case EXIT:
 			exit(sc);
 			break;
@@ -100,6 +111,32 @@ public class TextBuddy{
 			break;
 		}
 		return output;
+	}
+	
+	private static String sortList(){
+		if(!list.isEmpty()){
+			Collections.sort(list);
+			writeToFile();
+			return String.format(MSG_SUCCESS_SORT);
+		}
+		return String.format(MSG_EMPTY_SORT);
+	}
+	
+	private static String searchList(String input){
+		String UserKeyword=new String(input.split(" ")[1].trim());
+		int counter=1;
+		StringBuffer sb=new StringBuffer();
+		for (int i = 0; i < list.size(); i++) {
+			if(list.get(i).contains(UserKeyword)){
+				sb.append((counter++ +". "+list.get(i)));
+				sb.append(System.getProperty("line.separator"));
+			}
+		}
+		String allFoundLines=sb.toString();
+		if(allFoundLines.isEmpty()){
+			return String.format(MSG_KEYWORD_NOT_FOUND);
+		}
+		return allFoundLines;
 	}
 	
 	private static void exit(Scanner sc) {
@@ -131,6 +168,12 @@ public class TextBuddy{
 		else if (userInputCommand.equalsIgnoreCase("exit")) {
 			return USER_COMMAND.EXIT;
 		}
+		else if (userInputCommand.equalsIgnoreCase("sort")) {
+			return USER_COMMAND.SORT;
+		}
+		else if (userInputCommand.equalsIgnoreCase("search")) {
+			return USER_COMMAND.SEARCH;
+		}
 		else
 			return USER_COMMAND.INVALID;
 	}
@@ -159,7 +202,7 @@ public class TextBuddy{
 
 	// If file exits, it will load content into list and print it. Else it displays the txt file is empty
 	private static String listMem(){
-		loadList();
+		//loadList();
 		if(!list.isEmpty()){
 			return displayList();
 		}

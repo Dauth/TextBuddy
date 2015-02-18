@@ -1,51 +1,38 @@
 Welcome to TextBuddy. thetest.txt is ready for use
 command: 
-unknown command
-command: 
-thetest.txt is empty
-command: 
-added to thetest.txt: "add singapore"
-command: 
 added to thetest.txt: "add china"
 command: 
-added to thetest.txt: "add malaysia"
+added to thetest.txt: "add apple"
 command: 
-added to thetest.txt: "add thailand"
+added to thetest.txt: "add orange"
 command: 
-1. singapore
+added to thetest.txt: "add nun"
+command: 
+added to thetest.txt: "add sing"
+command: 
+added to thetest.txt: "add red"
+command: 
+Txt has been successfully sorted
+command: 
+1. apple
+2. apple
+3. apple
+4. china
+5. china
+6. china
+7. nun
+8. nun
+9. nun
+10. orange
+11. orange
+12. orange
+13. red
+14. red
+15. red
+16. sing
+17. sing
+18. sing
+command: 
+1. china
 2. china
-3. malaysia
-4. thailand
-command: 
-deleted from thetest.txt: "china"
-command: 
-1. singapore
-2. malaysia
-3. thailand
-command: 
-No command has been entered
-command: 
-Unable to delete line -1 as it does not exist
-command: 
-added to thetest.txt: "add Vietnam"
-command: 
-Unable to delete line 7 as it does not exist
-command: 
-deleted from thetest.txt: "singapore"
-command: 
-1. malaysia
-2. thailand
-3. Vietnam
-command: 
-No command has been entered
-command: 
-unknown command
-command: 
-No command has been entered
-command: 
-all content deleted from thetest.txt
-command: 
-thetest.txt is empty
-command: 
-added to thetest.txt: "add america"
-command: 
+3. china

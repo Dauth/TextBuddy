@@ -1,22 +1,9 @@
-displayy
-display
-add singapore
 add china
-add malaysia
-add thailand
+add apple
+add orange
+add nun
+add sing
+add red
+sort
 display
-delete 2
-display
-
-delete -1
-add Vietnam
-delete 7
-delete 1
-display
-
-today date
-
-clear
-display
-add america
-exit
+search ina
