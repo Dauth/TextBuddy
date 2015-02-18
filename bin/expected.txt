@@ -1,0 +1,51 @@
+Welcome to TextBuddy. thetest.txt is ready for use
+command: 
+unknown command
+command: 
+thetest.txt is empty
+command: 
+added to thetest.txt: "add singapore"
+command: 
+added to thetest.txt: "add china"
+command: 
+added to thetest.txt: "add malaysia"
+command: 
+added to thetest.txt: "add thailand"
+command: 
+1. singapore
+2. china
+3. malaysia
+4. thailand
+command: 
+deleted from thetest.txt: "china"
+command: 
+1. singapore
+2. malaysia
+3. thailand
+command: 
+No command has been entered
+command: 
+Unable to delete line -1 as it does not exist
+command: 
+added to thetest.txt: "add Vietnam"
+command: 
+Unable to delete line 7 as it does not exist
+command: 
+deleted from thetest.txt: "singapore"
+command: 
+1. malaysia
+2. thailand
+3. Vietnam
+command: 
+No command has been entered
+command: 
+unknown command
+command: 
+No command has been entered
+command: 
+all content deleted from thetest.txt
+command: 
+thetest.txt is empty
+command: 
+added to thetest.txt: "add america"
+command: 
