@@ -1,9 +1,8 @@
-add china
-add apple
-add orange
-add nun
-add sing
-add red
+add a
+add b
+add p
+add o
+add k
+add z
 sort
-display
-search ina
+search p

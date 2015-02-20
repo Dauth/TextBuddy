@@ -21,6 +21,7 @@ public class TextBuddy{
 	private static String MSG_EMPTY_SORT = "Unable to sort txt as it is empty\n";
 	private static String fileName="";
 	static ArrayList<String> list=new ArrayList<String>();
+	private static Scanner sc=new Scanner(System.in);
 
 	// Current possible commands a user can input
 	enum USER_COMMAND {
@@ -57,19 +58,18 @@ public class TextBuddy{
 	}
 
 	public void run(){
-		Scanner sc = readCommand();
 		while(sc.hasNext()){
 			loadList();
 			outputMsg(MSG_DEFAULT);
-			outputMsg(commandOperations(sc));
+			outputMsg(commandOperations());
 		}
 	}
 	
-	private String commandOperations(Scanner sc) {
+	private String commandOperations() {
 		String inputLine=sc.nextLine();
 		if(!inputLine.isEmpty()){
 			USER_COMMAND typeOfCommand=determineCommand(inputLine.split(" ",2)[0]);
-			return executeCommands(sc, typeOfCommand, inputLine);
+			return executeCommands(typeOfCommand, inputLine);
 		}
 		else
 			return String.format(MSG_NULL_FORMAT);
@@ -82,14 +82,14 @@ public class TextBuddy{
 	 * clear
 	 * exit
 	 * */
-	private static String executeCommands(Scanner sc, USER_COMMAND userCommand, String content) {
+	public static String executeCommands(USER_COMMAND userCommand, String content) {
 		String output="";
 		switch (userCommand){
 		case ADD:
 			output=addLine(content);
 			break;
 		case DELETE:
-			output=deleteOperations(sc, content);
+			output=deleteOperations(content);
 			break;
 		case CLEAR:
 			output=wipeFile();
@@ -104,7 +104,7 @@ public class TextBuddy{
 			output=searchList(content);
 			break;
 		case EXIT:
-			exit(sc);
+			exit();
 			break;
 		default:
 			output=MSG_UNKNOWN_COMMAND;
@@ -139,12 +139,12 @@ public class TextBuddy{
 		return allFoundLines;
 	}
 	
-	private static void exit(Scanner sc) {
+	private static void exit() {
 		sc.close();
 		System.exit(0);
 	}
 	
-	private static String deleteOperations(Scanner sc, String content) {
+	private static String deleteOperations(String content) {
 		String itemDeleted=deleteItemInList(Integer.parseInt(content.split(" ")[1].trim())-1);
 		return itemDeleted;
 	}
@@ -177,10 +177,7 @@ public class TextBuddy{
 		else
 			return USER_COMMAND.INVALID;
 	}
-	private Scanner readCommand() {
-		Scanner sc=new Scanner(System.in);
-		return sc;
-	}
+
 	private static String addLine(String st){
 		list.add(st.split(" ")[1].trim());
 		writeToFile();
@@ -190,11 +187,11 @@ public class TextBuddy{
 	//clears list before adding contents from txt file into list
 	private static void loadList(){
 		list.clear();
-		Scanner sc;
+		Scanner scc;
 		try {
-			sc = new Scanner(new File(fileName));
-			while(sc.hasNext())
-				list.add(sc.nextLine());
+			scc = new Scanner(new File(fileName));
+			while(scc.hasNext())
+				list.add(scc.nextLine());
 		} catch (FileNotFoundException e) {
 			outputMsg(MSG_NO_FILE_FOUND);
 		}

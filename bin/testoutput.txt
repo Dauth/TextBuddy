@@ -1,38 +1,17 @@
 Welcome to TextBuddy. thetest.txt is ready for use
 command: 
-added to thetest.txt: "add china"
+added to thetest.txt: "add a"
 command: 
-added to thetest.txt: "add apple"
+added to thetest.txt: "add b"
 command: 
-added to thetest.txt: "add orange"
+added to thetest.txt: "add p"
 command: 
-added to thetest.txt: "add nun"
+added to thetest.txt: "add o"
 command: 
-added to thetest.txt: "add sing"
+added to thetest.txt: "add k"
 command: 
-added to thetest.txt: "add red"
+added to thetest.txt: "add z"
 command: 
 Txt has been successfully sorted
 command: 
-1. apple
-2. apple
-3. apple
-4. china
-5. china
-6. china
-7. nun
-8. nun
-9. nun
-10. orange
-11. orange
-12. orange
-13. red
-14. red
-15. red
-16. sing
-17. sing
-18. sing
-command: 
-1. china
-2. china
-3. china
+1. p
