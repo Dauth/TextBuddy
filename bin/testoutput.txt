@@ -1,17 +1,51 @@
 Welcome to TextBuddy. thetest.txt is ready for use
 command: 
-added to thetest.txt: "add a"
+unknown command
 command: 
-added to thetest.txt: "add b"
+thetest.txt is empty
 command: 
-added to thetest.txt: "add p"
+added to thetest.txt: "singapore"
 command: 
-added to thetest.txt: "add o"
+added to thetest.txt: "china"
 command: 
-added to thetest.txt: "add k"
+added to thetest.txt: "malaysia"
 command: 
-added to thetest.txt: "add z"
+added to thetest.txt: "thailand"
 command: 
-Txt has been successfully sorted
+1. singapore
+2. china
+3. malaysia
+4. thailand
 command: 
-1. p
+deleted from thetest.txt: "china"
+command: 
+1. singapore
+2. malaysia
+3. thailand
+command: 
+No command has been entered
+command: 
+Unable to delete line -1 as it does not exist
+command: 
+added to thetest.txt: "Vietnam"
+command: 
+Unable to delete line 7 as it does not exist
+command: 
+deleted from thetest.txt: "singapore"
+command: 
+1. malaysia
+2. thailand
+3. Vietnam
+command: 
+No command has been entered
+command: 
+unknown command
+command: 
+No command has been entered
+command: 
+all content deleted from thetest.txt
+command: 
+thetest.txt is empty
+command: 
+added to thetest.txt: "america"
+command: 

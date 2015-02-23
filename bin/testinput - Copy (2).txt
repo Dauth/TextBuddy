@@ -1,0 +1,8 @@
+add a
+add b
+add p
+add o
+add k
+add z
+sort
+search p

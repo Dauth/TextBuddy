@@ -7,13 +7,13 @@ public class TextBuddy{
 	private static String MSG_ADD="added to %s: \"%s\"\n";
 	private static String MSG_DELETE="deleted from %s: \"%s\"\n";
 	private static String MSG_CLEAR="all content deleted from %s\n";
-	private static String MSG_SETUP="Welcome to TextBuddy. %s is ready for use"+"\n";
 	private static String MSG_DEFAULT="command: \n";
 	private static String MSG_UNKNOWN_COMMAND="unknown command\n";
 	private static String MSG_NO_FILE_FOUND="file does not exists\n";
 	private static String MSG_EMPTPY_FILE="%s is empty\n";
 	private static String MSG_WELCOME="Welcome to TextBuddy. %s is ready for use\n";
 	private static String MSG_DELETE_LINE_ERROR="Unable to delete line %d as it does not exist\n";
+	private static String MSG_RETRIEVE_LINE_ERROR="Unable to retrieve line %d as it does not exist\n";
 	private static String MSG_INVALID_FORMAT = "Invalid command, please use only available commands\n";
 	private static String MSG_NULL_FORMAT = "No command has been entered\n";
 	private static String MSG_KEYWORD_NOT_FOUND = "No lines in txt contains keyword\n";
@@ -27,52 +27,52 @@ public class TextBuddy{
 	enum USER_COMMAND {
 		ADD,DELETE,DISPLAY,CLEAR,EXIT,INVALID,SORT,SEARCH;
 	}
-	public static void main(String[] args) {
-		TextBuddy textBuddy = new TextBuddy(args);
+	public TextBuddy(String args) {
+		initTextBuddy(args);
 	}
 
-	public TextBuddy(String[] args){
-		initTextBuddy(args);
+	public static void main(String[] args) {
+		TextBuddy tb=new TextBuddy(args[0]);
 		run();
 	}
 
-	public void initTextBuddy(String[] args){
+	public static void initTextBuddy(String args){
 		retrieveFileName(args);
 		outputMsg(String.format(MSG_WELCOME, fileName));
 	}
 
 	//retrival of filename which user has entered in arguments
-	private void retrieveFileName(String[] args) {
-		if(args.length!=0){
-			File txtFile=new File(args[0]);
-			fileName=args[0];
+	private static void retrieveFileName(String args) {
+		if(args.length()!=0){
+			File txtFile=new File(args);
+			fileName=args;
 			setupTxtFile(txtFile);
 		}
 	}
 
 	//to check if file exists. if it doesn't, program will create it
-	private void setupTxtFile(File txtFile) {
+	private static void setupTxtFile(File txtFile) {
 		if(!isFileExists(txtFile)){
 			createFile(txtFile);
 		}
 	}
 
-	public void run(){
-		while(sc.hasNext()){
+	public static void run(){
+		while(true){
 			loadList();
 			outputMsg(MSG_DEFAULT);
-			outputMsg(commandOperations());
+			outputMsg(commandOperations(sc.nextLine()));
 		}
 	}
 	
-	private String commandOperations() {
-		String inputLine=sc.nextLine();
+	public static String commandOperations(String inputLine) {
 		if(!inputLine.isEmpty()){
 			USER_COMMAND typeOfCommand=determineCommand(inputLine.split(" ",2)[0]);
 			return executeCommands(typeOfCommand, inputLine);
 		}
-		else
+		else{
 			return String.format(MSG_NULL_FORMAT);
+		}
 	}
 
 	/*This function carries out the appropriate action based on user's command
@@ -152,6 +152,11 @@ public class TextBuddy{
 	private static void outputMsg (String text){
 		System.out.print(text);
 	}
+	
+	public int getListSize(){
+		loadList();
+		return list.size();
+	}
 
 	//This function checks if the command entered by the user is supported by the program  
 	private static USER_COMMAND determineCommand(String userInputCommand) {
@@ -178,14 +183,15 @@ public class TextBuddy{
 			return USER_COMMAND.INVALID;
 	}
 
-	private static String addLine(String st){
-		list.add(st.split(" ")[1].trim());
+	public static String addLine(String st){
+		String toBeAdded=st.split(" ", 2)[1];
+		list.add(toBeAdded);
 		writeToFile();
-		return String.format(MSG_ADD,fileName,st.trim());
+		return String.format(MSG_ADD,fileName,toBeAdded);
 	}
 
 	//clears list before adding contents from txt file into list
-	private static void loadList(){
+	public static void loadList(){
 		list.clear();
 		Scanner scc;
 		try {
@@ -217,6 +223,7 @@ public class TextBuddy{
 	}
 
 	public static String wipeFile(){
+		loadList();
 		list.clear();
 		writeToFile();
 		return String.format(MSG_CLEAR, fileName);
@@ -249,14 +256,14 @@ public class TextBuddy{
 
 	}
 	
-	public boolean isFileExists(File txtFile){
+	public static boolean isFileExists(File txtFile){
 		if(txtFile.exists()){
 			return true;
 		}
 		return false;
 	}
 
-	public void createFile(File txtFile){
+	public static void createFile(File txtFile){
 		if(!isFileExists(txtFile))
 			try {
 				txtFile.createNewFile();

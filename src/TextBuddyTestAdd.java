@@ -1,8 +1,11 @@
+
 import static org.junit.Assert.*;
+
 import java.util.*;
+
 import org.junit.*;
 
-public class TextBuddyTest {	
+public class TextBuddyTestAdd {	
 	static TextBuddy curr;
 	private static String MSG_ADD="added to %s: \"%s\"\n";
 	private static String MSG_CLEAR="all content deleted from %s\n";
@@ -47,8 +50,10 @@ public class TextBuddyTest {
 		assertEquals(String.format(MSG_ADD, fileName,"King George Island"), curr.commandOperations("add King George Island"));
 		assertEquals(String.format(MSG_ADD, fileName,"Yos Sudarso"), curr.commandOperations("add Yos Sudarso"));
 		System.out.println("in search "+curr.getListSize());
-		
-		
+		String actualLines=curr.commandOperations("search island");
+		String newLine=System.lineSeparator();
+		String expectedLines="Kodiak Island"+newLine+"King George Island"+newLine;
+		assertEquals(expectedLines,actualLines);
 	}
 	@Test
 	public void testSortAndDisplay(){

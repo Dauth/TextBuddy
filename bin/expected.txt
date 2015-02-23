@@ -4,13 +4,13 @@ unknown command
 command: 
 thetest.txt is empty
 command: 
-added to thetest.txt: "add singapore"
+added to thetest.txt: "singapore"
 command: 
-added to thetest.txt: "add china"
+added to thetest.txt: "china"
 command: 
-added to thetest.txt: "add malaysia"
+added to thetest.txt: "malaysia"
 command: 
-added to thetest.txt: "add thailand"
+added to thetest.txt: "thailand"
 command: 
 1. singapore
 2. china
@@ -27,7 +27,7 @@ No command has been entered
 command: 
 Unable to delete line -1 as it does not exist
 command: 
-added to thetest.txt: "add Vietnam"
+added to thetest.txt: "Vietnam"
 command: 
 Unable to delete line 7 as it does not exist
 command: 
@@ -47,5 +47,5 @@ all content deleted from thetest.txt
 command: 
 thetest.txt is empty
 command: 
-added to thetest.txt: "add america"
+added to thetest.txt: "america"
 command: 
