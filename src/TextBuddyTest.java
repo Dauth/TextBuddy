@@ -17,18 +17,18 @@ public class TextBuddyTest {
 
 	@After
 	public void tearDown() throws Exception {
-		curr.wipeFile();
+		curr.wipeFileOperation();
 	}
 	
 	@Test
-	public void testAddMehod() {	
+	public void testAddOperation() {	
 		assertEquals(String.format(MSG_ADD, fileName,"New Guinea"), curr.commandOperations("add New Guinea"));
 		assertEquals(String.format(MSG_ADD, fileName,"Ellesmere Island"), curr.commandOperations("add Ellesmere Island"));
 		System.out.println("out add "+curr.getListSize());
 	}
 	
 	@Test
-	public void testDeleteMethod(){
+	public void testDeleteOperation(){
 		assertEquals(String.format(MSG_ADD, fileName,"Kodiak Island"), curr.commandOperations("add Kodiak Island"));
 		assertEquals(String.format(MSG_ADD, fileName,"King George Island"), curr.commandOperations("add King George Island"));
 		assertEquals(String.format(MSG_ADD, fileName,"Yos Sudarso"), curr.commandOperations("add Yos Sudarso"));
@@ -36,13 +36,13 @@ public class TextBuddyTest {
 		System.out.println("in delete "+curr.getListSize());
 		int randNum=1+(int)(Math.random()*curr.getListSize());
 		System.out.println("my rand num is "+randNum);
-		String toBeDeletedLine=curr.list.get(randNum-1);
+		String toBeDeletedLine=curr.txtList.get(randNum-1);
 		System.out.println("line to be deleted "+toBeDeletedLine);
 		assertEquals(String.format(MSG_DELETE, fileName, toBeDeletedLine), curr.commandOperations("delete "+ randNum));
 	}
 	
 	@Test
-	public void testSearch(){
+	public void testSearchOperation(){
 		assertEquals(String.format(MSG_ADD, fileName,"Kodiak Island"), curr.commandOperations("add Kodiak Island"));
 		assertEquals(String.format(MSG_ADD, fileName,"King George Island"), curr.commandOperations("add King George Island"));
 		assertEquals(String.format(MSG_ADD, fileName,"Yos Sudarso"), curr.commandOperations("add Yos Sudarso"));
@@ -51,7 +51,7 @@ public class TextBuddyTest {
 		
 	}
 	@Test
-	public void testSortAndDisplay(){
+	public void testSortAndDisplayOperation(){
 		String newLine=System.lineSeparator();
 		String sortedString="1. King George Island"+newLine+"2. Kodiak Island"+newLine+"3. Rangsang"+newLine+"4. Yos Sudarso"+newLine;
 		assertEquals(String.format(MSG_ADD, fileName,"Kodiak Island"), curr.commandOperations("add Kodiak Island"));
@@ -64,7 +64,7 @@ public class TextBuddyTest {
 		assertEquals(sortedString, temp);
 	}
 	@Test
-	public void testClearMethod(){
+	public void testClearOperation(){
 		assertEquals(String.format(MSG_ADD, fileName,"Kodiak Island"), curr.commandOperations("add Kodiak Island"));
 		assertEquals(String.format(MSG_ADD, fileName,"King George Island"), curr.commandOperations("add King George Island"));
 		assertEquals(String.format(MSG_ADD, fileName,"Yos Sudarso"), curr.commandOperations("add Yos Sudarso"));

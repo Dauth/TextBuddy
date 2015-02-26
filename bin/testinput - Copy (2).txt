@@ -1,8 +1,19 @@
-add a
-add b
+add l
 add p
-add o
-add k
-add z
+add j
+add a
+add n
+add g
+add b
+add e
+add computer
+add computer science
+add computer watch
+add ipad
+add tablet
+add handphone
+add mouse
+add keyboard
 sort
-search p
+display
+search computer
